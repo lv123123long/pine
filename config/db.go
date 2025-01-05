@@ -12,7 +12,7 @@ import (
 // initDB 初始化数据库连接
 func initDB() {
 	// 数据库连接字符串
-	dsn := "user:pass@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := "root:abc123@tcp(127.0.0.1:3306)/dbname?charset=utf8mb4&parseTime=True&loc=Local"
 
 	// 打开数据库连接
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})

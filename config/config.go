@@ -8,16 +8,16 @@ import (
 
 type Config struct {
 	App struct {
-		Name string
-		Port string
-	}
+		Name string `json:"name"`
+		Port string `json:"port"`
+	} `json:"app"`
 	Database struct {
-		Host     string
-		Port     string
-		User     string
-		Password string
-		Name     string
-	}
+		Host     string `json:"host"`
+		Port     string `json:"port"`
+		User     string `json:"user"`
+		Password string `json:"password"`
+		Name     string `json:"name"`
+	} `json:"database"`
 }
 
 var AppConfig *Config
@@ -29,7 +29,7 @@ func InitConfig() {
 	viper.SetConfigType("yml")
 	// 设置配置文件路径
 	viper.AddConfigPath("./config")
-	
+
 	// 读取配置文件
 	if err := viper.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading config file: %v", err)
@@ -44,4 +44,5 @@ func InitConfig() {
 	}
 
 	initDB()
+	InitRedis()
 }
